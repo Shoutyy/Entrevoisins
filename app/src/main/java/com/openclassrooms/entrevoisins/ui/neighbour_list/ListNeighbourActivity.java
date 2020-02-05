@@ -42,7 +42,7 @@ public class ListNeighbourActivity extends AppCompatActivity {
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
         mAvatarNeighbour = findViewById(R.id.neighbour_avatar);
 
-         mAvatarNeighbour.setOnClickListener(new View.OnClickListener() {
+        mAvatarNeighbour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent detailNeighbourActivityIntent = new Intent(ListNeighbourActivity.this, DetailNeighbourActivity.class);
