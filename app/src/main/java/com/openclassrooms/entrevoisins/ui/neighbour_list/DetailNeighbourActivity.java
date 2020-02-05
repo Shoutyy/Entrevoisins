@@ -3,6 +3,8 @@ package com.openclassrooms.entrevoisins.ui.neighbour_list;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.openclassrooms.entrevoisins.R;
+
 public class DetailNeighbourActivity extends AppCompatActivity {
 
     @Override
