@@ -7,23 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.neighbour_list.DetailNeighbourActivity">
 
+    <ImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/avatar_neighbour"/>
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_arrow_back_black_24dp" />
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+        android:background="@android:color/transparent"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-
-    <ImageView
-        android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="290dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/avatar_neighbour" />
-
-
+        android:paddingLeft="15dp"
+        android:paddingTop="215dp"
+        android:text="Caroline"
+        android:textColor="#FFFFFF"
+        android:textSize="38dp" />
 </RelativeLayout>
