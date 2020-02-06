@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#eeeeee"
     tools:context=".ui.neighbour_list.DetailNeighbourActivity">
 
     <ImageView
         android:id="@+id/imageAvatar"
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="260dp"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/avatar_neighbour"/>
     <ImageButton
@@ -22,17 +23,44 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="260dp"
         android:paddingLeft="15dp"
         android:paddingTop="215dp"
         android:text="Caroline"
         android:textColor="#FFFFFF"
         android:textSize="38dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/background_text"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/background_text"></TextView>
+    </LinearLayout>
+
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="230dp"
         android:background="@drawable/rounded_button"
         app:srcCompat="@drawable/ic_star_white_24dp" />
 
