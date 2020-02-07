@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#0287c3</color>
     <color name="colorAccent">#FF80AB</color>
     <color name="starBackground">#eeeeee</color>
+    <color name="lineBelow">#f3f3f3</color>
+    <color name="colorBlack">#222831</color>
 </resources>
