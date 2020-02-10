@@ -58,8 +58,8 @@
 
     <Button
         android:id="@+id/neighbour_avatar"
-        android:layout_width="513dp"
-        android:layout_height="632dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:alpha="0"
         app:layout_anchor="@+id/container"
         app:layout_anchorGravity="center"
