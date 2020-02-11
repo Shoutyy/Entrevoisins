@@ -49,5 +49,6 @@ public class ListNeighbourActivity extends AppCompatActivity {
                 startActivity(detailNeighbourActivityIntent);
             }
         });
+
     }
 }

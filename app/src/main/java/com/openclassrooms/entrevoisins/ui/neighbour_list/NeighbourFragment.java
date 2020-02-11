@@ -27,6 +27,7 @@ public class NeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
+    private NeighbourFragmentCallback mFragmentCallback;
 
 
     /**
@@ -54,6 +55,12 @@ public class NeighbourFragment extends Fragment {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         initList();
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mFragmentCallback = (NeighbourFragmentCallback) context;
     }
 
     /**
@@ -85,4 +92,16 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
+
+    public interface NeighbourFragmentCallback {
+         void neighbourFragmentCallback(String data);
+    }
+
+    public void onNeighbourSelected(String data) {
+        mFragmentCallback.neighbourFragmentCallback(data);
+    }
+
+    /* public void configureOnClickRecyclerView(){
+        ItemClickSupport.addTo(mRecyclerView, R.layout.fragment_neighbour_list).set;
+    } */
 }
