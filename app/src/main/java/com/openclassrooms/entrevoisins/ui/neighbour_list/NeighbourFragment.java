@@ -94,14 +94,15 @@ public class NeighbourFragment extends Fragment {
     }
 
     public interface NeighbourFragmentCallback {
-         void neighbourFragmentCallback(String data);
+         void neighbourFragmentCallback(int position);
     }
 
-    public void onNeighbourSelected(String data) {
-        mFragmentCallback.neighbourFragmentCallback(data);
+    public void onNeighbourSelected(int position) {
+        mFragmentCallback.neighbourFragmentCallback(position);
     }
 
     /* public void configureOnClickRecyclerView(){
         ItemClickSupport.addTo(mRecyclerView, R.layout.fragment_neighbour_list).set;
     } */
+
 }
