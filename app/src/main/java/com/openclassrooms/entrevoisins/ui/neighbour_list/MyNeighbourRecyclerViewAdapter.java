@@ -24,7 +24,6 @@ import butterknife.ButterKnife;
 
 public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeighbourRecyclerViewAdapter.ViewHolder> {
 
-    // private final Context context = holder.itemView.getContext();
 
     private final List<Neighbour> mNeighbours;
 

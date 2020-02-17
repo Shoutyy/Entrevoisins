@@ -17,8 +17,6 @@ import butterknife.ButterKnife;
 
 public class ListNeighbourActivity extends AppCompatActivity {
 
-    private Button mAvatarNeighbour;
-
     // UI Components
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
@@ -34,19 +32,10 @@ public class ListNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_neighbour);
         ButterKnife.bind(this);
-
         setSupportActionBar(mToolbar);
         mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        mAvatarNeighbour = findViewById(R.id.neighbour_avatar);
-        mAvatarNeighbour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent detailNeighbourActivityIntent = new Intent(ListNeighbourActivity.this, DetailNeighbourActivity.class);
-                startActivity(detailNeighbourActivityIntent);
-            }
-        });
     }
 }
