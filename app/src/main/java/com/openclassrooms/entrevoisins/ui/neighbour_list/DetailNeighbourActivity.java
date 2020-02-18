@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.openclassrooms.entrevoisins.R;
-
+import com.openclassrooms.entrevoisins.model.Neighbour;
 
 
 public class DetailNeighbourActivity extends AppCompatActivity {
@@ -26,5 +26,10 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Intent intent = getIntent();
+        { Neighbour neighbour = intent.getParcelableExtra("neighbour");
+        String neighbourName = neighbour.getName();
+        String neighbourAvatar = neighbour.getAvatarUrl();
+        }
     }
 }
