@@ -14,6 +14,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
 
     private ImageButton mBackButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
