@@ -23,7 +23,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DetailNeighbourActivity.this, ListNeighbourActivity.class));
                 finish();
             }
         });

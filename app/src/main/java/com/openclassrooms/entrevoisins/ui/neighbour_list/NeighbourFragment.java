@@ -1,6 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -28,6 +29,7 @@ public class NeighbourFragment extends Fragment {
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
+    private Context mContext;
 
 
     /**
@@ -43,6 +45,13 @@ public class NeighbourFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
     }
 
     @Override
@@ -88,7 +97,9 @@ public class NeighbourFragment extends Fragment {
     }
     @Subscribe
     public void onDetailNeighbour(DetailNeighbourEvent event){
-        mApiService.detailNeighbour(event.neighbour);
-        startActivity(this, DetailNeighbourActivity.class);
+        Intent detailNeighbourActivityIntent = new Intent(mContext, DetailNeighbourActivity.class);
+        detailNeighbourActivityIntent.putExtra("neighbour", mContext);
+        startActivity(detailNeighbourActivityIntent);
+
     }
 }
