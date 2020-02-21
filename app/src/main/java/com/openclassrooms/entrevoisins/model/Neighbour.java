@@ -98,5 +98,7 @@ public class Neighbour implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(avatarUrl);
     }
 }

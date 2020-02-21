@@ -19,6 +19,12 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_neighbour);
+        {   Intent detailNeighbourActivityIntent = getIntent();
+            Neighbour neighbour = detailNeighbourActivityIntent.getParcelableExtra("neighbour");
+            int neighbourId = neighbour.getId();
+            String neighbourName = neighbour.getName();
+            String neighbourAvatar = neighbour.getAvatarUrl();
+        }
         mBackButton = findViewById(R.id.backButton);
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,10 +32,5 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 finish();
             }
         });
-        Intent intent = getIntent();
-        { Neighbour neighbour = intent.getParcelableExtra("neighbour");
-        String neighbourName = neighbour.getName();
-        String neighbourAvatar = neighbour.getAvatarUrl();
-        }
     }
 }

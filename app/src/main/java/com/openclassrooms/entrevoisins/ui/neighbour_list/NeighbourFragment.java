@@ -98,8 +98,8 @@ public class NeighbourFragment extends Fragment {
     @Subscribe
     public void onDetailNeighbour(DetailNeighbourEvent event){
         Intent detailNeighbourActivityIntent = new Intent(mContext, DetailNeighbourActivity.class);
-        detailNeighbourActivityIntent.putExtra("neighbour", mContext);
+        Neighbour neighbour = new Neighbour(1, "Caroline", "http://i.pravatar.cc/150?u=a042581f4e29026704d" );
+        detailNeighbourActivityIntent.putExtra("neighbour", neighbour );
         startActivity(detailNeighbourActivityIntent);
-
     }
 }
