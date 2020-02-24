@@ -32,11 +32,8 @@ public class Neighbour implements Parcelable {
     }
 
     protected Neighbour(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readInt();
-        }
+
+        id = in.readInt();
         name = in.readString();
         avatarUrl = in.readString();
     }

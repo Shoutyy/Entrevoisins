@@ -9,11 +9,10 @@
     tools:context=".ui.neighbour_list.DetailNeighbourActivity">
 
     <ImageView
-        android:id="@+id/item_list_avatar"
+        android:id="@+id/id_avatar"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="262dp"
         android:scaleType="fitXY" />
-        *app:srcCompat="@drawable/avatar_neighbour"/>
 
     <ImageButton
         android:id="@+id/backButton"
@@ -24,7 +23,7 @@
         android:background="@android:color/transparent"/>
 
     <TextView
-        android:id="@+id/item_list_name"
+        android:id="@+id/id_nom"
         android:layout_width="match_parent"
         android:layout_height="260dp"
         android:paddingLeft="15dp"
@@ -49,13 +48,14 @@
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/background_text"
             android:orientation="vertical">
+
             <TextView
+                android:id="@+id/id_nom2"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:drawableBottom="@drawable/line_below_text"
                 android:paddingLeft="20dp"
-                android:text="Caroline"
-                android:textSize="30dp"/>
+                android:textSize="30dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -71,11 +71,11 @@
                 android:text="  +33 6 86 57 90 14"
                 android:gravity="center_vertical"/>
             <TextView
+                android:id="@+id/id_facebook"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingLeft="20dp"
                 android:drawableStart="@drawable/ic_public_pink_24dp"
-                android:text="  www.facebook.fr/caroline"
                 android:gravity="center_vertical"/>
         </LinearLayout>
 
