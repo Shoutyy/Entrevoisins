@@ -1,7 +1,6 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -38,11 +38,12 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         id_facebook = findViewById(R.id.id_facebook);
         id_facebook.setText("  www.facebook.fr/"+neighbour.getName());
 
-        Uri uri = Uri.parse(neighbour.getAvatarUrl());
         id_avatar = findViewById(R.id.id_avatar);
-        id_avatar.setImageURI(uri);
+        Picasso.get().load(neighbour.getAvatarUrl()).into(id_avatar);
 
-        // id_avatar.setImageURI(Uri.parse(neighbour.getAvatarUrl()));
+        //Uri uri = Uri.parse(neighbour.getAvatarUrl());
+        //id_avatar = findViewById(R.id.id_avatar);
+        //id_avatar.setImageURI(uri);
         mBackButton = findViewById(R.id.backButton);
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
