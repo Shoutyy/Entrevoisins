@@ -7,6 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
+    final int PAGE_COUNT = 2; //T
+
     public ListNeighbourPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -18,7 +20,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        return NeighbourFragment.newInstance();
+        return NeighbourFragment.newInstance(position + 1);
     }
 
     /**
@@ -27,6 +29,6 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 1;
+        return PAGE_COUNT; //T (1)
     }
 }

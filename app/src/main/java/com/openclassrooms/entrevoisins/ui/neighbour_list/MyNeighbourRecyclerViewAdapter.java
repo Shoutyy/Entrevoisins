@@ -61,14 +61,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
             }
         });
-
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent detailNeighbourActivityIntent = new Intent(v.getContext(), DetailNeighbourActivity.class);
-                v.getContext().startActivity(detailNeighbourActivityIntent);
-            }
-        }); */
     }
 
 

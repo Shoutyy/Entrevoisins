@@ -26,18 +26,23 @@ import java.util.List;
 
 public class NeighbourFragment extends Fragment {
 
+    public static final String NEIGHBOUR_PAGE = "NEIGHBOUR_PAGE"; //T
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
     private Context mContext;
+    private int mPage;
 
 
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance() {
+    public static NeighbourFragment newInstance(int page) { //(int page) T
+        Bundle args = new Bundle(); //T
+        args.putInt(NEIGHBOUR_PAGE, page); //T
         NeighbourFragment fragment = new NeighbourFragment();
+        fragment.setArguments(args); //T
         return fragment;
     }
 
@@ -45,6 +50,7 @@ public class NeighbourFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
+        mPage = getArguments().getInt(NEIGHBOUR_PAGE); //T
     }
 
 
