@@ -23,6 +23,8 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private ImageView id_avatar;
     private TextView id_nom2;
     private TextView id_facebook;
+    private ImageButton imageButtonStar;
+    boolean isPressed = false;
 
 
     @Override
@@ -41,14 +43,23 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         id_avatar = findViewById(R.id.id_avatar);
         Picasso.get().load(neighbour.getAvatarUrl()).into(id_avatar);
 
-        //Uri uri = Uri.parse(neighbour.getAvatarUrl());
-        //id_avatar = findViewById(R.id.id_avatar);
-        //id_avatar.setImageURI(uri);
         mBackButton = findViewById(R.id.backButton);
         mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        imageButtonStar = findViewById(R.id.imageButtonStar);
+        imageButtonStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isPressed)
+                    imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
+                else
+                    imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
+                isPressed = !isPressed;
             }
         });
     }
