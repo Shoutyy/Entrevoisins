@@ -31,4 +31,5 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return PAGE_COUNT; //T (1)
     }
+
 }

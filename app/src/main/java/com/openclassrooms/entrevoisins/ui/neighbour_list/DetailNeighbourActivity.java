@@ -24,7 +24,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private TextView id_nom2;
     private TextView id_facebook;
     private ImageButton imageButtonStar;
-    boolean isPressed = false;
+    private boolean isPressed = false;
 
 
     @Override
@@ -56,9 +56,9 @@ public class DetailNeighbourActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isPressed)
-                    imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
-                else
                     imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
+                else
+                    imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 isPressed = !isPressed;
             }
         });
