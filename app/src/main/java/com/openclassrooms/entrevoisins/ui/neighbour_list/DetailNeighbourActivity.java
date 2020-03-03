@@ -57,7 +57,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         imageButtonStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(favorite == true)
+                if(favorite)
                 { favorite = false;
                     imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
                     }
