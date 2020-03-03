@@ -55,14 +55,13 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             }
         });
 
-        holder.mNeighbourName.setOnClickListener(new View.OnClickListener(){
+        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

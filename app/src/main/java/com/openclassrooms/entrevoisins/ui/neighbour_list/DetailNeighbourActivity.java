@@ -58,13 +58,16 @@ public class DetailNeighbourActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(favorite)
-                { favorite = false;
+                {
+                    favorite = false;
                     imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
-                    }
+                }
                 else
-                { favorite = true;
+                {
+                    favorite = true;
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
-                    }
+                }
+                neighbour.setFavorite(favorite);
             }
         });
     }
