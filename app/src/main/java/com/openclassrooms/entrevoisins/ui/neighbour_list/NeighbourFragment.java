@@ -38,13 +38,12 @@ public class NeighbourFragment extends Fragment {
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
-    public static NeighbourFragment newInstance(int page) { //(int page) T
-        Bundle args = new Bundle(); //T
-        args.putInt(NEIGHBOUR_PAGE, page); //T
+    public static NeighbourFragment newInstance(boolean fFilter) {
         NeighbourFragment fragment = new NeighbourFragment();
-        fragment.setArguments(args); //T
+        fragment.favoriteFilter = fFilter;
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

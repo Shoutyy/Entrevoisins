@@ -4,10 +4,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 2; //T
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<Fragment> mFragmentTitleList = new ArrayList<>();
+
+
+    public void addFragment(Fragment mFragment,String title){
+        mFragmentList.add(mFragment);
+        mFragmentTitleList.add(title);
+    }
 
     public ListNeighbourPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -20,7 +30,8 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int position) {
-        return NeighbourFragment.newInstance(position + 1);
+
+        return NeighbourFragment.newInstance(true);
     }
 
     /**
@@ -29,7 +40,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return PAGE_COUNT; //T (1)
+        return  mFragmentList.size();
     }
 
 }
