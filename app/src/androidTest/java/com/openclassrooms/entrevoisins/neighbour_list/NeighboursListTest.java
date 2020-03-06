@@ -68,4 +68,23 @@ public class NeighboursListTest {
         // Then : the number of element is 11
         onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
     }
+
+    @Test
+    public void myNeighbourList_detailAction_shouldDisplay() {
+        onView(ViewMatchers.withId(R.id.item_list_name))
+                .perform(click());
+
+    }
+
+    @Test
+    public void myNeighbourList_neighbourName_shouldDisplay() {
+
+
+    }
+
+    @Test
+    public void myNeighbourList_onlyFavoriteNeighbour_shouldDisplay() {
+
+
+    }
 }
