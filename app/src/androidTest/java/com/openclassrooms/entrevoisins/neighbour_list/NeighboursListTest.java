@@ -69,6 +69,7 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
     }
 
+    /*
     @Test
     public void myNeighbourList_detailAction_shouldDisplay() {
         onView(ViewMatchers.withId(R.id.item_list_name))
@@ -86,5 +87,5 @@ public class NeighboursListTest {
     public void myNeighbourList_onlyFavoriteNeighbour_shouldDisplay() {
 
 
-    }
+    } */
 }
