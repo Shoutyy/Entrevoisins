@@ -12,7 +12,7 @@ import java.util.List;
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<Fragment> mFragmentTitleList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
 
 
     public void addFragment(Fragment mFragment,String title){
@@ -43,7 +43,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return  mFragmentList.size();
     }
-    
+
     @Override
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);

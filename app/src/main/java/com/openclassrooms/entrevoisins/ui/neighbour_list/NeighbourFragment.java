@@ -32,6 +32,7 @@ public class NeighbourFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private Context mContext;
     private int mPage;
+    private boolean favoriteFilter;
 
 
     /**
@@ -62,20 +63,35 @@ public class NeighbourFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
-        Context context = view.getContext();
+        if (this.favoriteFilter = true) {
+            View view = inflater.inflate(R.layout.fragment_favorite_list, container, false);
+            Context context = view.getContext();
+            mRecyclerView = (RecyclerView) view;
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+            initList();
+            return view;
+        } else {
+            View view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
+            Context context = view.getContext();
+            mRecyclerView = (RecyclerView) view;
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+            initList();
+            return view;
+        }
+       /* Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         initList();
-        return view;
+        return view;*/
     }
-
     /**
      * Init the List of neighbours
      */
     private void initList() {
-        if (mFragmentTitleList.get(title) = "favorite") {
+        if (this.favoriteFilter = true) {
             mNeighbours = mApiService.getNeighbours();
             mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
         }
