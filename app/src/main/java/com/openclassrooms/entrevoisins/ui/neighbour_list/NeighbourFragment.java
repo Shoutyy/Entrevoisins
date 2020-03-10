@@ -48,7 +48,6 @@ public class NeighbourFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
-
     }
     // mPage = getArguments().getInt(NEIGHBOUR_PAGE); //T
 
@@ -80,7 +79,11 @@ public class NeighbourFragment extends Fragment {
     private void initList() {
         if (this.favoriteFilter = true) {
             mNeighbours = mApiService.getNeighbours();
-            mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
+            for (Neighbour neighbour : mNeighbours) {
+                if (neighbour.getFavorite() = true); {
+                    mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
+                }
+            }
         }
         else {
             mNeighbours = mApiService.getNeighbours();
