@@ -26,12 +26,10 @@ import java.util.List;
 
 public class NeighbourFragment extends Fragment {
 
-    public static final String NEIGHBOUR_PAGE = "NEIGHBOUR_PAGE"; //T
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
     private Context mContext;
-    private int mPage;
     private boolean favoriteFilter;
 
 
@@ -50,9 +48,9 @@ public class NeighbourFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
-        mPage = getArguments().getInt(NEIGHBOUR_PAGE); //T
-    }
 
+    }
+    // mPage = getArguments().getInt(NEIGHBOUR_PAGE); //T
 
     @Override
     public void onAttach(Context context) {
@@ -63,29 +61,18 @@ public class NeighbourFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view;
         if (this.favoriteFilter = true) {
-            View view = inflater.inflate(R.layout.fragment_favorite_list, container, false);
-            Context context = view.getContext();
-            mRecyclerView = (RecyclerView) view;
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-            initList();
-            return view;
+            view = inflater.inflate(R.layout.fragment_favorite_list, container, false);
         } else {
-            View view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
-            Context context = view.getContext();
-            mRecyclerView = (RecyclerView) view;
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-            initList();
-            return view;
+            view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
         }
-       /* Context context = view.getContext();
+        Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         initList();
-        return view;*/
+        return view;
     }
     /**
      * Init the List of neighbours
