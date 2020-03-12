@@ -61,7 +61,7 @@ public class NeighbourFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
-        if (this.favoriteFilter = true) {
+        if(this.favoriteFilter){
             view = inflater.inflate(R.layout.fragment_favorite_list, container, false);
         } else {
             view = inflater.inflate(R.layout.fragment_neighbour_list, container, false);
@@ -77,6 +77,16 @@ public class NeighbourFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
+        mNeighbours = mApiService.getNeighbours();
+        if(this.favoriteFilter){
+            mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
+        }
+        else {
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        }
+    }
+
+    /* private void initList() {
         if (this.favoriteFilter = true) {
             mNeighbours = mApiService.getNeighbours();
             for (Neighbour neighbour : mNeighbours) {
@@ -89,7 +99,7 @@ public class NeighbourFragment extends Fragment {
             mNeighbours = mApiService.getNeighbours();
             mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
         }
-    }
+    } */
 
     @Override
     public void onStart() {
@@ -112,6 +122,7 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
+
     @Subscribe
     public void onDetailNeighbour(DetailNeighbourEvent event){
         Intent detailNeighbourActivityIntent = new Intent(mContext, DetailNeighbourActivity.class);
