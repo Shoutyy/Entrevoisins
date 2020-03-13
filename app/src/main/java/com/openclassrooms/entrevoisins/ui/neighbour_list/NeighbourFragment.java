@@ -85,19 +85,11 @@ public class NeighbourFragment extends Fragment {
             mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
         }
     }
-
-    /* private void initList() {
-        if (this.favoriteFilter = true) {
-            mNeighbours = mApiService.getNeighbours();
-            for (Neighbour neighbour : mNeighbours) {
-                if (neighbour.getFavorite() = true); {
-                    mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
-                }
+    /* if(this.favoriteFilter){
+        for (Neighbour neighbour : mNeighbours) {
+            if (neighbour.getFavorite()) {
+                mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
             }
-        }
-        else {
-            mNeighbours = mApiService.getNeighbours();
-            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
         }
     } */
 
