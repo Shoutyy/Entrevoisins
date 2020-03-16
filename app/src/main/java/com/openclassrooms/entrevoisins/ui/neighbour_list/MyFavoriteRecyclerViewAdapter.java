@@ -40,26 +40,31 @@ public class MyFavoriteRecyclerViewAdapter extends RecyclerView.Adapter<MyFavori
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Neighbour neighbour = mNeighbours.get(position);
-        holder.mNeighbourName.setText(neighbour.getName());
-        Glide.with(holder.mNeighbourAvatar.getContext())
-                .load(neighbour.getAvatarUrl())
-                .apply(RequestOptions.circleCropTransform())
-                .into(holder.mNeighbourAvatar);
+        for (Neighbour neighbour : mNeighbours) {
+            if (neighbour.getFavorite()) {
+               // Neighbour neighbour = mNeighbours.get(position);
+                holder.mNeighbourName.setText(neighbour.getName());
+                Glide.with(holder.mNeighbourAvatar.getContext())
+                        .load(neighbour.getAvatarUrl())
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(holder.mNeighbourAvatar);
 
-        holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
-            }
-        });
+                holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
+                    }
+                });
 
-        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
+                holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
+                    }
+                });
             }
-        });
+        }
+
     }
 
 
@@ -69,6 +74,7 @@ public class MyFavoriteRecyclerViewAdapter extends RecyclerView.Adapter<MyFavori
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.item_list_avatar)
         public ImageView mNeighbourAvatar;
         @BindView(R.id.item_list_name)
