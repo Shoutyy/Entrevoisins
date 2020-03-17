@@ -21,6 +21,7 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -79,7 +80,15 @@ public class NeighbourFragment extends Fragment {
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
         if(this.favoriteFilter){
-            mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
+            List<Neighbour> mNeighbourFavorite = mApiService.getNeighbours();
+            Neighbour[] neighbourArray = new Neighbour[mNeighbourFavorite.size()];
+            neighbourArray = mNeighbourFavorite.toArray(neighbourArray);
+            for (Neighbour neighbour : neighbourArray) {
+                if (!neighbour.getFavorite()) {
+                    mNeighbourFavorite.remove(neighbour);
+                }
+            }
+            mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbourFavorite));
         }
         else {
             mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
