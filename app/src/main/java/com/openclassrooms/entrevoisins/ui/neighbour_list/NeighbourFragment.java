@@ -80,7 +80,7 @@ public class NeighbourFragment extends Fragment {
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
         if(this.favoriteFilter){
-            List<Neighbour> mNeighbourFavorite = mApiService.getNeighbours();
+            List<Neighbour> mNeighbourFavorite = mNeighbours;
             Neighbour[] neighbourArray = new Neighbour[mNeighbourFavorite.size()];
             neighbourArray = mNeighbourFavorite.toArray(neighbourArray);
             for (Neighbour neighbour : neighbourArray) {
@@ -91,16 +91,17 @@ public class NeighbourFragment extends Fragment {
             mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbourFavorite));
         }
         else {
-            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+            List<Neighbour> mNeighbourList = mNeighbours;
+            Neighbour[] neighbourArray = new Neighbour[mNeighbourList.size()];
+            neighbourArray = mNeighbourList.toArray(neighbourArray);
+            for (Neighbour neighbour : neighbourArray) {
+                if (neighbour.getFavorite()) {
+                    mNeighbourList.remove(neighbour);
+                }
+            }
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbourList));
         }
     }
-    /* if(this.favoriteFilter){
-        for (Neighbour neighbour : mNeighbours) {
-            if (neighbour.getFavorite()) {
-                mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbours));
-            }
-        }
-    } */
 
     @Override
     public void onStart() {
