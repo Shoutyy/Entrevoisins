@@ -16,9 +16,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.IsNull.notNullValue;
 
@@ -69,12 +72,11 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
     }
 
-    /*
+
     @Test
     public void myNeighbourList_detailAction_shouldDisplay() {
-        onView(ViewMatchers.withId(R.id.item_list_name))
-                .perform(click());
-
+        onView(withText("Caroline")).perform(click());
+        onView(withId(R.id.id_nom)).check(matches(withText("Caroline")));
     }
 
     @Test
@@ -87,5 +89,6 @@ public class NeighboursListTest {
     public void myNeighbourList_onlyFavoriteNeighbour_shouldDisplay() {
 
 
-    } */
+    }
+
 }

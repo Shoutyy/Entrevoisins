@@ -21,6 +21,8 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -78,28 +80,19 @@ public class NeighbourFragment extends Fragment {
      * Init the List of neighbours
      */
     private void initList() {
-        mNeighbours = mApiService.getNeighbours();
         if(this.favoriteFilter){
-            List<Neighbour> mNeighbourFavorite = mNeighbours;
-            Neighbour[] neighbourArray = new Neighbour[mNeighbourFavorite.size()];
-            neighbourArray = mNeighbourFavorite.toArray(neighbourArray);
-            for (Neighbour neighbour : neighbourArray) {
-                if (!neighbour.getFavorite()) {
-                    mNeighbourFavorite.remove(neighbour);
+            mNeighbours = mApiService.getNeighbours();
+            List<Neighbour> neighbourList = new ArrayList<>();
+            for (Neighbour neighbour : mNeighbours) {
+                if (neighbour.getFavorite()) {
+                  neighbourList.add(neighbour);
                 }
             }
-            mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(mNeighbourFavorite));
+            mRecyclerView.setAdapter(new MyFavoriteRecyclerViewAdapter(neighbourList));
         }
         else {
-            List<Neighbour> mNeighbourList = mNeighbours;
-            Neighbour[] neighbourArray = new Neighbour[mNeighbourList.size()];
-            neighbourArray = mNeighbourList.toArray(neighbourArray);
-            for (Neighbour neighbour : neighbourArray) {
-                if (neighbour.getFavorite()) {
-                    mNeighbourList.remove(neighbour);
-                }
-            }
-            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbourList));
+            mNeighbours = mApiService.getNeighbours();
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
         }
     }
 
