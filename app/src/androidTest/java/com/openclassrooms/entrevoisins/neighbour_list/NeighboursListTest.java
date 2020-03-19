@@ -79,16 +79,10 @@ public class NeighboursListTest {
         onView(withId(R.id.id_nom)).check(matches(withText("Caroline")));
     }
 
-    @Test
-    public void myNeighbourList_neighbourName_shouldDisplay() {
-
-
-    }
 
     @Test
     public void myNeighbourList_onlyFavoriteNeighbour_shouldDisplay() {
-
-
+        onView(withText("Favorites")).perform(click());
     }
 
 }
