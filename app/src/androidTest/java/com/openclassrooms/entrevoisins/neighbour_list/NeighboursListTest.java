@@ -18,6 +18,7 @@ import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -25,6 +26,7 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
@@ -92,8 +94,22 @@ public class NeighboursListTest {
 
     @Test
     public void myNeighbourList_detailAction_shouldDisplay() {
-        onView(withText("Caroline")).perform(click());
-        onView(withId(R.id.id_nom)).check(matches(withText("Caroline")));
+        onView(allOf(withId(R.id.item_list_name),
+            childAtPosition(
+                    childAtPosition(
+                            withId(R.id.list_neighbours),
+                            0),
+                    1),
+            isDisplayed())).perform(click());
+        onView(withId(R.id.id_nom2)).check(matches(isDisplayed()));
+
+       // onView(withText("Caroline")).perform(click());
+
+       /*  onData(withId(R.id.id_nom))
+                .inAdapterView(withId(R.id.list_neighbours))
+                .atPosition(0)
+                .perform(click());
+         */
     }
 
 
@@ -119,14 +135,6 @@ public class NeighboursListTest {
                                 1),
                         isDisplayed()));
         textView2.check(doesNotExist());
-
-        // onView(withId(R.id.item_list_name))
-        //       .check(matches(withText(containsString("Caroline"))));
-        // onView(withText("Chloé")).check(matches(withContentDescription("true")));
-
-         // onView(withText("Chloé")).check(matches(withText("Chloé")));
-        // onView(allOf(withId(R.id.item_list_name), withText("Caroline"),isDisplayed()));
-
     }
 
     private static Matcher<View> childAtPosition(
