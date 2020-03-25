@@ -24,6 +24,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.test.espresso.Espresso.onData;
@@ -115,19 +116,22 @@ public class NeighboursListTest {
 
     @Test
     public void myNeighbourList_onlyFavoriteNeighbour_shouldDisplay() {
+        onView(withText("Caroline")).perform(click());
+        onView(allOf(withId(R.id.imageButtonStar))).perform(click());
+        onView(allOf(withId(R.id.backButton))).perform(click());
         onView(withText("Favorites")).perform(click());
         ViewInteraction textView = onView(
-                allOf(withId(R.id.item_list_name), withText("Chloé"),
+                allOf(withId(R.id.item_list_name), withText("Caroline"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.list_neighbours),
-                                        0),
+                                        2),
                                 1),
                         isDisplayed()));
         textView.check(matches(isDisplayed()));
-
+/*
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.item_list_name), withText("Caroline"),
+                allOf(withId(R.id.item_list_name), withText("Nathalie"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.list_neighbours),
@@ -135,6 +139,7 @@ public class NeighboursListTest {
                                 1),
                         isDisplayed()));
         textView2.check(doesNotExist());
+*/
     }
 
     private static Matcher<View> childAtPosition(
