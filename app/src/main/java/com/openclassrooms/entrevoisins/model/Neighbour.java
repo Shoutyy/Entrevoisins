@@ -108,4 +108,5 @@ public class Neighbour implements Parcelable {
         parcel.writeString(avatarUrl);
         parcel.writeInt(favorite ? 0 : 1);
     }
+
 }

@@ -26,7 +26,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private ImageButton imageButtonStar;
     private boolean favorite;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

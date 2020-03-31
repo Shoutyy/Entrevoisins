@@ -104,13 +104,6 @@ public class NeighboursListTest {
             isDisplayed())).perform(click());
         onView(withId(R.id.id_nom2)).check(matches(isDisplayed()));
 
-       // onView(withText("Caroline")).perform(click());
-
-       /*  onData(withId(R.id.id_nom))
-                .inAdapterView(withId(R.id.list_neighbours))
-                .atPosition(0)
-                .perform(click());
-         */
     }
 
 
@@ -129,17 +122,6 @@ public class NeighboursListTest {
                                 1),
                         isDisplayed()));
         textView.check(matches(isDisplayed()));
-/*
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.item_list_name), withText("Nathalie"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.list_neighbours),
-                                        1),
-                                1),
-                        isDisplayed()));
-        textView2.check(doesNotExist());
-*/
     }
 
     private static Matcher<View> childAtPosition(

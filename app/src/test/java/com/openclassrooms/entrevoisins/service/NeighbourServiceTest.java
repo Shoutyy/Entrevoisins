@@ -1,33 +1,41 @@
 package com.openclassrooms.entrevoisins.service;
 
+
+import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourFragment;
-
+import com.openclassrooms.entrevoisins.ui.neighbour_list.DetailNeighbourActivity;
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import android.support.test.rule.ActivityTestRule;
 
 /**
  * Unit test on Neighbour service
  */
+
 @RunWith(JUnit4.class)
+
 public class NeighbourServiceTest {
 
     private NeighbourApiService service;
-    private NeighbourFragment neighbourList;
+
+    @Rule
+    public ActivityTestRule<DetailNeighbourActivity> rule = new ActivityTestRule<>(DetailNeighbourActivity.class);
 
     @Before
     public void setup() {
         service = DI.getNewInstanceApiService();
+
     }
 
     @Test
@@ -46,11 +54,20 @@ public class NeighbourServiceTest {
 
     @Test
     public void getDetailNeighbourWithSuccess() {
-
+        DetailNeighbourActivity activity = DetailNeighbourActivity.getActivity();
+        assertNotNull(activity.findViewById(R.id.id_nom));
     }
+
 
     @Test
     public void getFavoriteNeighbourWithSuccess() {
-
+        List<Neighbour> neighbourList = new ArrayList<>();
+        for (Neighbour neighbour : service.getNeighbours()) {
+            if (neighbour.getFavorite()) {
+                neighbourList.add(neighbour);
+            }
+        }
+        Neighbour neighbour = neighbourList.get(0);
+        assertTrue(neighbour.getFavorite());
     }
 }
