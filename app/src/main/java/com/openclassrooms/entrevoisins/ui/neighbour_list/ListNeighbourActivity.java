@@ -1,14 +1,10 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.openclassrooms.entrevoisins.R;
 
@@ -34,8 +30,8 @@ public class ListNeighbourActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
         mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
-        mPagerAdapter.addFragment(NeighbourFragment.newInstance(false), "Neighbours");
-        mPagerAdapter.addFragment(NeighbourFragment.newInstance(true),"Favorites");
+        mPagerAdapter.addFragment(NeighbourFragment.newInstance(), "Neighbours");
+        mPagerAdapter.addFragment(FavoriteNeighbourFragment.newInstance(),"Favorites");
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));

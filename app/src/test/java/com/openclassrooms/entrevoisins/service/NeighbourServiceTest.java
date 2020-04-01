@@ -7,7 +7,6 @@ import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.DetailNeighbourActivity;
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -17,7 +16,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import android.support.test.rule.ActivityTestRule;
 
 /**
  * Unit test on Neighbour service
@@ -28,13 +26,17 @@ import android.support.test.rule.ActivityTestRule;
 public class NeighbourServiceTest {
 
     private NeighbourApiService service;
-
-    @Rule
-    public ActivityTestRule<DetailNeighbourActivity> rule = new ActivityTestRule<>(DetailNeighbourActivity.class);
+    private List<Neighbour> neighbourList;
 
     @Before
     public void setup() {
         service = DI.getNewInstanceApiService();
+        List<Neighbour> neighbourList = new ArrayList<>();
+        for (Neighbour neighbour : service.getNeighbours()) {
+            if (neighbour.getFavorite()) {
+                neighbourList.add(neighbour);
+            }
+        }
 
     }
 
@@ -53,13 +55,6 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void getDetailNeighbourWithSuccess() {
-        DetailNeighbourActivity activity = DetailNeighbourActivity.getActivity();
-        assertNotNull(activity.findViewById(R.id.id_nom));
-    }
-
-
-    @Test
     public void getFavoriteNeighbourWithSuccess() {
         List<Neighbour> neighbourList = new ArrayList<>();
         for (Neighbour neighbour : service.getNeighbours()) {
@@ -70,4 +65,17 @@ public class NeighbourServiceTest {
         Neighbour neighbour = neighbourList.get(0);
         assertTrue(neighbour.getFavorite());
     }
+
+   /* @Test
+    public void deleteFavoriteNeighbourWithSuccess() {
+        List<Neighbour> neighbourList = new ArrayList<>();
+        for (Neighbour neighbour : service.getNeighbours()) {
+            if (neighbour.getFavorite()) {
+                neighbourList.add(neighbour);
+            }
+        }
+        Neighbour neighbourToDelete = neighbourList.get(0);
+        neighbourList.deleteNeighbour(neighbourToDelete);
+        assertFalse(neighbourList.getNeighbours().contains(neighbourToDelete));
+    } */
 }
