@@ -53,6 +53,14 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         });
 
         imageButtonStar = findViewById(R.id.imageButtonStar);
+        if(favorite)
+        {
+            imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
+        }
+        else
+        {
+            imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
+        }
         imageButtonStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

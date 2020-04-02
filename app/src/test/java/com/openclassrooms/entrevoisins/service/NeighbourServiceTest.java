@@ -31,13 +31,6 @@ public class NeighbourServiceTest {
     @Before
     public void setup() {
         service = DI.getNewInstanceApiService();
-        List<Neighbour> neighbourList = new ArrayList<>();
-        for (Neighbour neighbour : service.getNeighbours()) {
-            if (neighbour.getFavorite()) {
-                neighbourList.add(neighbour);
-            }
-        }
-
     }
 
     @Test
@@ -66,6 +59,14 @@ public class NeighbourServiceTest {
         assertTrue(neighbour.getFavorite());
     }
 
+
+    @Test
+    public void deleteFavoriteNeighbourWithSuccess() {
+        Neighbour neighbourToDelete = service.getNeighbours().get(0);
+        neighbourToDelete.setFavorite(true);
+        service.deleteFavoriteNeighbour(neighbourToDelete);
+        assertTrue(neighbourToDelete.getFavorite() == false);
+    }
    /* @Test
     public void deleteFavoriteNeighbourWithSuccess() {
         List<Neighbour> neighbourList = new ArrayList<>();

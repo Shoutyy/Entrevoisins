@@ -111,12 +111,12 @@ public class FavoriteNeighbourFragment extends Fragment {
         mApiService.deleteFavoriteNeighbour(event.neighbour);
         initList();
     }
-
+/*
     @Subscribe
     public void onDetailNeighbour(DetailNeighbourEvent event){
         Intent detailNeighbourActivityIntent = new Intent(mContext, DetailNeighbourActivity.class);
         detailNeighbourActivityIntent.putExtra("neighbour", event.neighbour );
         mContext.startActivity(detailNeighbourActivityIntent);
-    }
+    } */
 }
 
