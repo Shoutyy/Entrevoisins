@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
+import com.openclassrooms.entrevoisins.events.DeleteFavoriteNeighbourEvent;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.events.DetailNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
@@ -31,7 +32,7 @@ public class FavoriteNeighbourFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
     private Context mContext;
-    private boolean favorite;
+    boolean favorite;
 
 
     /**
@@ -99,12 +100,19 @@ public class FavoriteNeighbourFragment extends Fragment {
      * Fired if the user clicks on a delete button
      * @param
      */
-
-    public void onDeleteNeighbour(Neighbour neighbour) {
-        favorite = neighbour.getFavorite();
-        // favorite = false;
-        neighbour.setFavorite(false);
+    /*
+    @Subscribe
+    public void onDeleteNeighbour(DeleteNeighbourEvent event) {
+        mApiService.deleteNeighbour(event.neighbour);
         initList();
+    }
+    */
+    @Subscribe
+    public void onDeleteFavoriteNeighbour(DeleteFavoriteNeighbourEvent event) {
+        mApiService.deleteFavoriteNeighbour(event.neighbour);
+        initList();
+        /*favorite = event.neighbour.getFavorite();
+        event.neighbour.setFavorite(false);*/
     }
 
     @Subscribe
