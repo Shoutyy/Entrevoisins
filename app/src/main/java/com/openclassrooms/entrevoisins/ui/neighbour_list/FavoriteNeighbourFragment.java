@@ -99,9 +99,10 @@ public class FavoriteNeighbourFragment extends Fragment {
      * Fired if the user clicks on a delete button
      * @param
      */
+
     public void onDeleteNeighbour(Neighbour neighbour) {
         favorite = neighbour.getFavorite();
-       // favorite = false;
+        // favorite = false;
         neighbour.setFavorite(false);
         initList();
     }

@@ -52,8 +52,8 @@ public class MyFavoriteRecyclerViewAdapter extends RecyclerView.Adapter<MyFavori
             @Override
             public void onClick(View v) {
                 favorite = neighbour.getFavorite();
-               // favorite = false;
-                neighbour.setFavorite(favorite);
+                //favorite = false;
+                neighbour.setFavorite(false);
                // EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
             }
         });
