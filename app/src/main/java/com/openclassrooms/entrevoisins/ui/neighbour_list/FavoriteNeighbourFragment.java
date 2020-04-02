@@ -32,7 +32,6 @@ public class FavoriteNeighbourFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
     private Context mContext;
-    boolean favorite;
 
 
     /**
@@ -107,12 +106,10 @@ public class FavoriteNeighbourFragment extends Fragment {
         initList();
     }
     */
-    @Subscribe
+   @Subscribe
     public void onDeleteFavoriteNeighbour(DeleteFavoriteNeighbourEvent event) {
         mApiService.deleteFavoriteNeighbour(event.neighbour);
         initList();
-        /*favorite = event.neighbour.getFavorite();
-        event.neighbour.setFavorite(false);*/
     }
 
     @Subscribe

@@ -33,7 +33,6 @@ public class NeighbourFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
     private Context mContext;
-    private boolean favoriteFilter;
 
 
     /**
@@ -44,7 +43,6 @@ public class NeighbourFragment extends Fragment {
         NeighbourFragment fragment = new NeighbourFragment();
         return fragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
