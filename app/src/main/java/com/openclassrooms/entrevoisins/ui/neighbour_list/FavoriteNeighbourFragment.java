@@ -99,19 +99,13 @@ public class FavoriteNeighbourFragment extends Fragment {
      * Fired if the user clicks on a delete button
      * @param
      */
-    /*
-    @Subscribe
-    public void onDeleteNeighbour(DeleteNeighbourEvent event) {
-        mApiService.deleteNeighbour(event.neighbour);
-        initList();
-    }
-    */
+
    @Subscribe
     public void onDeleteFavoriteNeighbour(DeleteFavoriteNeighbourEvent event) {
         mApiService.deleteFavoriteNeighbour(event.neighbour);
         initList();
     }
-/*
+    /*
     @Subscribe
     public void onDetailNeighbour(DetailNeighbourEvent event){
         Intent detailNeighbourActivityIntent = new Intent(mContext, DetailNeighbourActivity.class);

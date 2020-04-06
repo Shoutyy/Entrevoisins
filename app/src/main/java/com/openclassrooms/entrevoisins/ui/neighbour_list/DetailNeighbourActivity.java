@@ -26,6 +26,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private ImageButton imageButtonStar;
     private boolean favorite;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +75,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                     favorite = true;
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 }
-                neighbour.setFavorite(favorite);
             }
         });
     }
