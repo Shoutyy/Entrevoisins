@@ -75,6 +75,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                     favorite = true;
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 }
+                neighbour.setFavorite(favorite);
             }
         });
     }
