@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -25,6 +27,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private TextView id_facebook;
     private ImageButton imageButtonStar;
     private boolean favorite;
+    private NeighbourApiService mApiService;
 
 
     @Override
@@ -44,6 +47,8 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         Picasso.get().load(neighbour.getAvatarUrl()).into(id_avatar);
 
         favorite = neighbour.getFavorite();
+
+        mApiService = DI.getNeighbourApiService();
 
         mBackButton = findViewById(R.id.backButton);
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +80,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                     favorite = true;
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 }
-                neighbour.setFavorite(favorite);
+                mApiService.setFavoriteNeighbour(neighbour);
             }
         });
     }
