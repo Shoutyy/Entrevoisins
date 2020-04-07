@@ -73,11 +73,13 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 if(favorite)
                 {
                     favorite = false;
+                    fneighbour.setFavorite(false);
                     imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
                 }
                 else
                 {
                     favorite = true;
+                    fneighbour.setFavorite(true);
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 }
                 mApiService.setFavoriteNeighbour(fneighbour);
