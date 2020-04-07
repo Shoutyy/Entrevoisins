@@ -20,7 +20,7 @@ import org.w3c.dom.Text;
 public class DetailNeighbourActivity extends AppCompatActivity {
 
     private ImageButton mBackButton;
-    private Neighbour neighbour;
+    private Neighbour fneighbour;
     private TextView id_nom;
     private ImageView id_avatar;
     private TextView id_nom2;
@@ -35,18 +35,18 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_neighbour);
         Intent detailNeighbourActivityIntent = getIntent();
-        neighbour = detailNeighbourActivityIntent.getParcelableExtra("neighbour");
+        fneighbour = detailNeighbourActivityIntent.getParcelableExtra("neighbour");
         id_nom = findViewById(R.id.id_nom);
-        id_nom.setText(neighbour.getName());
+        id_nom.setText(fneighbour.getName());
         id_nom2 = findViewById(R.id.id_nom2);
-        id_nom2.setText(neighbour.getName());
+        id_nom2.setText(fneighbour.getName());
         id_facebook = findViewById(R.id.id_facebook);
-        id_facebook.setText("  www.facebook.fr/"+neighbour.getName());
+        id_facebook.setText("  www.facebook.fr/"+fneighbour.getName());
 
         id_avatar = findViewById(R.id.id_avatar);
-        Picasso.get().load(neighbour.getAvatarUrl()).into(id_avatar);
+        Picasso.get().load(fneighbour.getAvatarUrl()).into(id_avatar);
 
-        favorite = neighbour.getFavorite();
+        favorite = fneighbour.getFavorite();
 
         mApiService = DI.getNeighbourApiService();
 
@@ -80,7 +80,7 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                     favorite = true;
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 }
-                mApiService.setFavoriteNeighbour(neighbour);
+                mApiService.setFavoriteNeighbour(fneighbour);
             }
         });
     }
