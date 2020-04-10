@@ -24,5 +24,5 @@ public interface NeighbourApiService {
 
     void deleteFavoriteNeighbour(Neighbour neighbour);
 
-    void setFavoriteNeighbour(Neighbour fneighbour);
+    void setFavoriteNeighbour(Neighbour fNeighbour);
 }

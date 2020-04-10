@@ -61,6 +61,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
             }
         });
+
     }
 
 

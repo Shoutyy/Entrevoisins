@@ -20,7 +20,7 @@ import org.w3c.dom.Text;
 public class DetailNeighbourActivity extends AppCompatActivity {
 
     private ImageButton mBackButton;
-    private Neighbour fneighbour;
+    private Neighbour fNeighbour;
     private TextView id_nom;
     private ImageView id_avatar;
     private TextView id_nom2;
@@ -35,18 +35,18 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_neighbour);
         Intent detailNeighbourActivityIntent = getIntent();
-        fneighbour = detailNeighbourActivityIntent.getParcelableExtra("neighbour");
+        fNeighbour = detailNeighbourActivityIntent.getParcelableExtra("neighbour");
         id_nom = findViewById(R.id.id_nom);
-        id_nom.setText(fneighbour.getName());
+        id_nom.setText(fNeighbour.getName());
         id_nom2 = findViewById(R.id.id_nom2);
-        id_nom2.setText(fneighbour.getName());
+        id_nom2.setText(fNeighbour.getName());
         id_facebook = findViewById(R.id.id_facebook);
-        id_facebook.setText("  www.facebook.fr/"+fneighbour.getName());
+        id_facebook.setText("  www.facebook.fr/"+fNeighbour.getName());
 
         id_avatar = findViewById(R.id.id_avatar);
-        Picasso.get().load(fneighbour.getAvatarUrl()).into(id_avatar);
+        Picasso.get().load(fNeighbour.getAvatarUrl()).into(id_avatar);
 
-        favorite = fneighbour.getFavorite();
+        favorite = fNeighbour.getFavorite();
 
         mApiService = DI.getNeighbourApiService();
 
@@ -73,16 +73,16 @@ public class DetailNeighbourActivity extends AppCompatActivity {
                 if(favorite)
                 {
                     favorite = false;
-                    fneighbour.setFavorite(false);
+                    fNeighbour.setFavorite(false);
                     imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
                 }
                 else
                 {
                     favorite = true;
-                    fneighbour.setFavorite(true);
+                    fNeighbour.setFavorite(true);
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);
                 }
-                mApiService.setFavoriteNeighbour(fneighbour);
+                mApiService.setFavoriteNeighbour(fNeighbour);
             }
         });
     }
