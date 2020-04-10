@@ -88,7 +88,7 @@ public class NeighboursListTest {
      */
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
-        // Given : We remove the element at position 2
+        // Given : We remove the element at position 1
         onView(allOf(withId(R.id.list_neighbours),
                 withParent(allOf(withId(R.id.container),
                         childAtPosition(
@@ -101,8 +101,7 @@ public class NeighboursListTest {
                         childAtPosition(
                                 withId(R.id.main_content),
                                 1))),
-                isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
+                isDisplayed())).perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
         // Then : the number of element is 11
         onView(allOf(withId(R.id.list_neighbours),
                 withParent(allOf(withId(R.id.container),
@@ -123,7 +122,6 @@ public class NeighboursListTest {
                     1),
             isDisplayed())).perform(click());
         onView(withId(R.id.id_nom2)).check(matches(isDisplayed()));
-
     }
 
 
@@ -162,5 +160,4 @@ public class NeighboursListTest {
             }
         };
     }
-
 }

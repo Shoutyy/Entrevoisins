@@ -29,7 +29,6 @@ public class DetailNeighbourActivity extends AppCompatActivity {
     private boolean favorite;
     private NeighbourApiService mApiService;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,14 +69,12 @@ public class DetailNeighbourActivity extends AppCompatActivity {
         imageButtonStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(favorite)
-                {
+                if(favorite) {
                     favorite = false;
                     fNeighbour.setFavorite(false);
                     imageButtonStar.setImageResource(R.drawable.ic_star_border_white_24dp);
                 }
-                else
-                {
+                else {
                     favorite = true;
                     fNeighbour.setFavorite(true);
                     imageButtonStar.setImageResource(R.drawable.ic_star_white_24dp);

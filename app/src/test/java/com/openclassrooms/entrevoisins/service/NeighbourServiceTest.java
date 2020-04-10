@@ -67,16 +67,4 @@ public class NeighbourServiceTest {
         service.deleteFavoriteNeighbour(neighbourToDelete);
         assertTrue(neighbourToDelete.getFavorite() == false);
     }
-   /* @Test
-    public void deleteFavoriteNeighbourWithSuccess() {
-        List<Neighbour> neighbourList = new ArrayList<>();
-        for (Neighbour neighbour : service.getNeighbours()) {
-            if (neighbour.getFavorite()) {
-                neighbourList.add(neighbour);
-            }
-        }
-        Neighbour neighbourToDelete = neighbourList.get(0);
-        neighbourList.deleteNeighbour(neighbourToDelete);
-        assertFalse(neighbourList.getNeighbours().contains(neighbourToDelete));
-    } */
 }

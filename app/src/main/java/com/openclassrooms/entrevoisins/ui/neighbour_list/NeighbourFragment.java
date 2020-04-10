@@ -31,7 +31,6 @@ public class NeighbourFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private Context mContext;
 
-
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
@@ -66,6 +65,7 @@ public class NeighbourFragment extends Fragment {
         initList();
         return view;
     }
+
     /**
      * Init the List of neighbours
      */
@@ -98,7 +98,7 @@ public class NeighbourFragment extends Fragment {
     }
 
     @Subscribe
-    public void onDetailNeighbour(DetailNeighbourEvent event){
+    public void onDetailNeighbour(DetailNeighbourEvent event) {
         Intent detailNeighbourActivityIntent = new Intent(mContext, DetailNeighbourActivity.class);
         detailNeighbourActivityIntent.putExtra("neighbour", event.neighbour );
         mContext.startActivity(detailNeighbourActivityIntent);

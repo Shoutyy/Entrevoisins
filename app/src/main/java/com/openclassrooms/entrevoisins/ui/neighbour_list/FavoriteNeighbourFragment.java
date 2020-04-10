@@ -86,7 +86,6 @@ public class FavoriteNeighbourFragment extends Fragment {
         initList();
     }
 
-
     @Override
     public void onStop() {
         super.onStop();
@@ -97,7 +96,6 @@ public class FavoriteNeighbourFragment extends Fragment {
      * Fired if the user clicks on a delete button
      * @param
      */
-
    @Subscribe
     public void onDeleteFavoriteNeighbour(DeleteFavoriteNeighbourEvent event) {
         mApiService.deleteFavoriteNeighbour(event.neighbour);

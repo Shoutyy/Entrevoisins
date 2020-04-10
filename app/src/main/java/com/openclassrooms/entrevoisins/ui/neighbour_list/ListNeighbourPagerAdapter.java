@@ -1,10 +1,8 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
-import android.support.annotation.BoolRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

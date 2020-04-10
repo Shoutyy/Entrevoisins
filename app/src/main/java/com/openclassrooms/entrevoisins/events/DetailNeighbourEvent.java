@@ -10,6 +10,5 @@ public class DetailNeighbourEvent {
 
     public DetailNeighbourEvent(Neighbour neighbour) {
         this.neighbour = neighbour;
-
     }
 }
