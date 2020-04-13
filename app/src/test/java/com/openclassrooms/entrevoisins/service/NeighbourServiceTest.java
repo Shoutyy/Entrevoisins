@@ -49,22 +49,29 @@ public class NeighbourServiceTest {
 
     @Test
     public void getFavoriteNeighbourWithSuccess() {
-        List<Neighbour> neighbourList = new ArrayList<>();
-        for (Neighbour neighbour : service.getNeighbours()) {
-            if (neighbour.getFavorite()) {
-                neighbourList.add(neighbour);
-            }
-        }
-        Neighbour neighbour = neighbourList.get(0);
-        assertTrue(neighbour.getFavorite());
+        Neighbour neighbourFavorite = service.getFavoriteNeighbours().get(0);
+        assertTrue(neighbourFavorite.getFavorite() == true);
     }
 
+    /* List<Neighbour> neighbourList = new ArrayList<>();
+        for (Neighbour neighbour : service.getNeighbours()) {
+        if (neighbour.getFavorite()) {
+            neighbourList.add(neighbour);
+        }
+    }
+    Neighbour neighbour = neighbourList.get(0);
+    assertTrue(neighbour.getFavorite()); */
+    @Test
+    public void addFavoriteNeighbourWithSuccess() {
+        Neighbour neighbourFavoriteToAdd = service.getNeighbours().get(0);
+        neighbourFavoriteToAdd.setFavorite(true);
+        assertTrue(service.getFavoriteNeighbours().contains(neighbourFavoriteToAdd));
+    }
 
     @Test
     public void deleteFavoriteNeighbourWithSuccess() {
-        Neighbour neighbourToDelete = service.getNeighbours().get(0);
-        neighbourToDelete.setFavorite(true);
+        Neighbour neighbourToDelete = service.getFavoriteNeighbours().get(0);
         service.deleteFavoriteNeighbour(neighbourToDelete);
-        assertTrue(neighbourToDelete.getFavorite() == false); /*test*/
+        assertFalse(service.getFavoriteNeighbours().contains(neighbourToDelete));
     }
 }

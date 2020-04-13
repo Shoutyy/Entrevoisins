@@ -45,7 +45,6 @@ public class NeighbourFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
     }
-    // mPage = getArguments().getInt(NEIGHBOUR_PAGE); //T
 
     @Override
     public void onAttach(Context context) {
