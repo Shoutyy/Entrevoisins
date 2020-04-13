@@ -53,14 +53,6 @@ public class NeighbourServiceTest {
         assertTrue(neighbourFavorite.getFavorite() == true);
     }
 
-    /* List<Neighbour> neighbourList = new ArrayList<>();
-        for (Neighbour neighbour : service.getNeighbours()) {
-        if (neighbour.getFavorite()) {
-            neighbourList.add(neighbour);
-        }
-    }
-    Neighbour neighbour = neighbourList.get(0);
-    assertTrue(neighbour.getFavorite()); */
     @Test
     public void addFavoriteNeighbourWithSuccess() {
         Neighbour neighbourFavoriteToAdd = service.getNeighbours().get(0);
