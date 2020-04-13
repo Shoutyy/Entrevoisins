@@ -65,6 +65,6 @@ public class NeighbourServiceTest {
         Neighbour neighbourToDelete = service.getNeighbours().get(0);
         neighbourToDelete.setFavorite(true);
         service.deleteFavoriteNeighbour(neighbourToDelete);
-        assertTrue(neighbourToDelete.getFavorite() == false);
+        assertTrue(neighbourToDelete.getFavorite() == false); /*test*/
     }
 }
