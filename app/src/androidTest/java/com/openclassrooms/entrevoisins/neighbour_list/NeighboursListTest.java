@@ -114,7 +114,6 @@ public class NeighboursListTest {
                 isDisplayed())).check(withItemCount(ITEMS_COUNT-1));
     }
 
-
     @Test
     public void myNeighbourList_detailAction_shouldDisplay() {
         onView(allOf(withId(R.id.item_list_name),
@@ -206,8 +205,6 @@ public class NeighboursListTest {
                                 withId(R.id.main_content),
                                 1))),
                 isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT-1));
-
-
     }
 
 
