@@ -60,7 +60,6 @@ public class NeighboursListTest {
     private static int FAVORITE_ITEMS_COUNT = 2;
 
     private ListNeighbourActivity mActivity;
-    private List<Neighbour> mNeighbours;
 
     @Rule
     public ActivityTestRule<ListNeighbourActivity> mActivityRule =
@@ -146,7 +145,6 @@ public class NeighboursListTest {
                 isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT));
     }
 
-
     @Test
     public void addNeighbour_inFavoriteList() {
         onView(withText("Caroline")).perform(click());
@@ -208,6 +206,8 @@ public class NeighboursListTest {
                                 withId(R.id.main_content),
                                 1))),
                 isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT-1));
+
+
     }
 
 
