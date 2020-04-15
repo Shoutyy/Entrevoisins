@@ -19,6 +19,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -33,6 +34,7 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.swipeLeft;
 import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -55,6 +57,7 @@ public class NeighboursListTest {
 
     // This is fixed
     private static int ITEMS_COUNT = 12;
+    private static int FAVORITE_ITEMS_COUNT = 2;
 
     private ListNeighbourActivity mActivity;
     private List<Neighbour> mNeighbours;
@@ -67,6 +70,7 @@ public class NeighboursListTest {
     public void setUp() {
         mActivity = mActivityRule.getActivity();
         assertThat(mActivity, notNullValue());
+
     }
 
     /**
@@ -124,23 +128,89 @@ public class NeighboursListTest {
         onView(withId(R.id.id_nom2)).check(matches(isDisplayed()));
     }
 
-
     @Test
     public void myNeighbourList_onlyFavoriteNeighbour_shouldDisplay() {
-        onView(withText("Caroline")).perform(click());
-        onView(allOf(withId(R.id.imageButtonStar))).perform(click());
-        onView(allOf(withId(R.id.backButton))).perform(click());
-        onView(withText("Favorites")).perform(click());
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.item_list_name), withText("Caroline"),
+        onView(allOf(withContentDescription("Favorites"),
+                childAtPosition(
                         childAtPosition(
+                                withId(R.id.tabs),
+                                0),
+                        1),
+                isDisplayed())).perform(click());
+
+        onView(allOf(withId(R.id.list_neighbours),
+                withParent(allOf(withId(R.id.container),
+                        childAtPosition(
+                                withId(R.id.main_content),
+                                1))),
+                isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT));
+    }
+
+
+    @Test
+    public void addNeighbour_inFavoriteList() {
+        onView(withText("Caroline")).perform(click());
+
+        onView(allOf(withId(R.id.imageButtonStar),
+                childAtPosition(
+                        childAtPosition(
+                                withId(android.R.id.content),
+                                0),
+                        4),
+                isDisplayed())).perform(click());
+
+        onView(allOf(withId(R.id.backButton),
+                childAtPosition(
+                        childAtPosition(
+                                withId(android.R.id.content),
+                                0),
+                        1),
+                isDisplayed())).perform(click());
+
+        onView(allOf(withContentDescription("Favorites"),
+                childAtPosition(
+                        childAtPosition(
+                                withId(R.id.tabs),
+                                0),
+                        1),
+                isDisplayed())).perform(click());
+
+       onView(allOf(withId(R.id.list_neighbours),
+                withParent(allOf(withId(R.id.container),
+                        childAtPosition(
+                                withId(R.id.main_content),
+                                1))),
+                isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT+1));
+    }
+
+    @Test
+    public void removeNeighbour_inFavoriteList() {
+        onView(allOf(withContentDescription("Favorites"),
+                childAtPosition(
+                        childAtPosition(
+                                withId(R.id.tabs),
+                                0),
+                        1),
+                isDisplayed())).perform(click());
+
+        onView(allOf(withId(R.id.item_list_delete_button),
+                childAtPosition(
+                        allOf(withId(R.id.item_list_neighbour),
                                 childAtPosition(
                                         withId(R.id.list_neighbours),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView.check(matches(isDisplayed()));
+                                        0)),
+                        2),
+                isDisplayed())).perform(click());
+
+        onView(allOf(withId(R.id.list_neighbours),
+                withParent(allOf(withId(R.id.container),
+                        childAtPosition(
+                                withId(R.id.main_content),
+                                1))),
+                isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT-1));
     }
+
+
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {

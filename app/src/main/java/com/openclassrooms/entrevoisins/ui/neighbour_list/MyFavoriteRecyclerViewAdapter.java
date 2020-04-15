@@ -62,6 +62,12 @@ public class MyFavoriteRecyclerViewAdapter extends RecyclerView.Adapter<MyFavori
                 EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
             }
         });
+        holder.mNeighbourName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new DetailNeighbourEvent(neighbour));
+            }
+        });
     }
 
     @Override
