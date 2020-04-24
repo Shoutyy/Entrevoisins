@@ -48,9 +48,14 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void getFavoriteNeighbourWithSuccess() {
-        Neighbour neighbourFavorite = service.getFavoriteNeighbours().get(0);
-        assertTrue(neighbourFavorite.getFavorite() == true);
+    public void getFavoriteNeighbourWithSuccess(){
+        boolean result = true;
+        for(Neighbour neighbour: service.getFavoriteNeighbours()){
+            if (neighbour.getFavorite() == false) {
+                result = false;
+            }
+        }
+        assertTrue(result);
     }
 
     @Test

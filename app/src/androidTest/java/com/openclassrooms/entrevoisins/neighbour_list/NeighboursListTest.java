@@ -132,42 +132,6 @@ public class NeighboursListTest {
                 isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT));
     }
 
-    @Test
-    public void addNeighbour_inFavoriteList() {
-        onView(withText("Caroline")).perform(click());
-
-        onView(allOf(withId(R.id.imageButtonStar),
-                childAtPosition(
-                        childAtPosition(
-                                withId(android.R.id.content),
-                                0),
-                        4),
-                isDisplayed())).perform(click());
-
-        onView(allOf(withId(R.id.backButton),
-                childAtPosition(
-                        childAtPosition(
-                                withId(android.R.id.content),
-                                0),
-                        1),
-                isDisplayed())).perform(click());
-
-        onView(allOf(withContentDescription("Favorites"),
-                childAtPosition(
-                        childAtPosition(
-                                withId(R.id.tabs),
-                                0),
-                        1),
-                isDisplayed())).perform(click());
-
-       onView(allOf(withId(R.id.list_neighbours),
-                withParent(allOf(withId(R.id.container),
-                        childAtPosition(
-                                withId(R.id.main_content),
-                                1))),
-                isDisplayed())).check(withItemCount(FAVORITE_ITEMS_COUNT+1));
-    }
-
 
 
 
